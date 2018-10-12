@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metamorph xmlns="http://www.culturegraph.org/metamorph"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.culturegraph.org/metamorph metamorph.xsd"
+           entityMarker="." version="1">
+    <meta><!-- Metadata --></meta>
+    <macros><!-- Macro definitions --></macros>
+    <rules>
+        <combine name="full-id" value="${catalog} ${id}">
+            <data name="id" source="001"/>
+            <data name="catalog" source="003"/>
+            <postprocess>
+                <case to="lower"/>
+                <occurrence only="1"/>
+            </postprocess>
+        </combine>
+    </rules>
+    <maps><!-- Data maps --></maps>
+</metamorph>

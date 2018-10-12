@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+group 'org.metafacture'
+version '0.1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'info.picocli:picocli:3.6.1'
+    compile 'org.culturegraph:metafacture-core:3.5.0'
+}
+
+task fatJar(type: Jar) {
+    dependencies {
+        compile 'info.picocli:picocli:3.6.0'
+        compile 'org.culturegraph:metafacture-core:3.5.0'
+    }
+
+    manifest {
+        attributes(
+                'Implementation-Title': project.name,
+                'Implementation-Version': version,
+                'Main-Class': 'org.metafacture.morphviz.App',
+        )
+    }
+
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    with jar
+}
+

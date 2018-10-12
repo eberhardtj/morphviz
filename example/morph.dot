@@ -1,0 +1,17 @@
+digraph dataflow {
+graph [ rankdir = "LR"];
+node [ fontsize = "9"  shape = "plaintext"  fontname="Helvetica"];
+edge [ fontsize = "9"   fontname="Helvetica"];
+
+"1" [label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"><TR><TD COLSPAN="2" BGCOLOR="lightgray"><B>combine</B></TD></TR><TR><TD>reset</TD><TD>'false'</TD></TR><TR><TD>sameEntity</TD><TD>'false'</TD></TR><TR><TD>value</TD><TD>'${catalog} ${id}'</TD></TR></TABLE>>];
+"2" [label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"><TR><TD COLSPAN="2" BGCOLOR="white"><B>case</B></TD></TR><TR><TD>to</TD><TD>'lower'</TD></TR></TABLE>>];
+"3" [label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"><TR><TD COLSPAN="2" BGCOLOR="white"><B>occurrence</B></TD></TR><TR><TD>only</TD><TD>'1'</TD></TR><TR><TD>sameEntity</TD><TD>'false'</TD></TR></TABLE>>];
+"4" [shape="circle"  fillcolor="palegreen" style="filled" label=""];
+"001" [label="001" shape="ellipse"  fillcolor="skyblue" style="filled"];
+"003" [label="003" shape="ellipse"  fillcolor="skyblue" style="filled"];
+"001" -> "1" [ label = "id" ] 
+"003" -> "1" [ label = "catalog" ] 
+"1" -> "2" 
+"2" -> "3" 
+"3" -> "4" [ label = "full-id" ] 
+}

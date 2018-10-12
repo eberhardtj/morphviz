@@ -1,0 +1,80 @@
+= MorphViz
+:TOC:
+
+MorphViz converts link:https://github.com/metafacture/metafacture-core/wiki[Metamorph DSL] into link:https://en.wikipedia.org/wiki/DOT_(graph_description_language)[DOT] files.
+
+== Installation
+
+=== Build
+
+Run the following command to construct a jar with dependencies.
+
+----
+gradlew fatJar
+----
+
+Produces `morphviz-VERSION.jar` in `build/libs`.
+
+
+== Command-line Interface
+
+Run the client via
+
+----
+java -jar path/to/morphviz.jar
+----
+
+=== Usage
+
+----
+Usage: morphviz [-hV] -i=<inputFile> [-o=<outputFile>]
+Exports Metamorph-XML into DOT format.
+  -h, --help                Display this help message.
+  -i, --input=<inputFile>   Input file. Use '-' for stdin.
+  -o, --output=<outputFile> Output file. Use '-' for stdout. Default: stdout.
+  -V, --version             Display version info.
+----
+
+=== Examples
+
+==== Help
+
+----
+java -jar morphviz.jar -h
+----
+
+==== Convert
+
+Converts the file `rules.xml` to `rules.dot`
+
+----
+java -jar morphviz.jar -i rules.xml -o rules.dot
+----
+
+or
+
+----
+java -jar morphviz.jar -i rules.xml > rules.dot
+----
+
+== Appendix
+
+=== Create PDF from DOT-File
+
+* Install https://www.graphviz.org/download/[GraphViz]
+* Run `dot -Tpdf rules.dot -o rules.pdf`
+
+Note::
+This applies also to any other target format provided by graphviz.
+
+=== Visualize DOT-File online
+
+* Open link:https://dreampuf.github.io/GraphvizOnline/[GraphvizOnline]
+* Copy the content of the generated DOT-File
+
+Note::
+Graphvizonline provides various downloadable output formats.
+
+== References
+
+* https://github.com/dreampuf/GraphvizOnline
