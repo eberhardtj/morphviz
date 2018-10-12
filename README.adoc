@@ -45,7 +45,7 @@ java -jar morphviz.jar -h
 
 ==== Convert
 
-Converts the file `rules.xml` to `rules.dot`
+Converts the file `rules.xml` into `rules.dot`
 
 ----
 java -jar morphviz.jar -i rules.xml -o rules.dot
